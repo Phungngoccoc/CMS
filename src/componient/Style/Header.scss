@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+.header-container {
+    height: 45px;
+    background-color: #a1b87d;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .nav-bar {
+
+        height: 100%;
+
+        .nav-container {
+            // height: 65px;
+
+            .toggle-menu {
+                border: none;
+                outline: none;
+            }
+
+            .nav-body {
+                height: 65px;
+                padding-top: 10px;
+                // align-items: center;
+            }
+
+            .nav-btn {
+                button {
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    font-size: 22px;
+                    padding: 0px 5px;
+                    font-weight: lighter !important;
+                }
+            }
+        }
+    }
+}
+
+.navbar-expand-md .navbar-nav .dropdown-menu {
+    border: none;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1), 2px 2px 2px rgba(0, 0, 0, 0.1);
+    background-color: aliceblue;
+    border-radius: 0px;
+}
