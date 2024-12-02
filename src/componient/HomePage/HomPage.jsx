@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../Style/HomePage.scss"
 import Category from "./Section/Category";
+import Collection from "./Section/Collection";
 
 const HomePage = () => {
     const settings = {
@@ -52,6 +53,7 @@ const HomePage = () => {
                 </Slider>
             </div>
             <Category />
+            <Collection />
         </div>
     );
 };
