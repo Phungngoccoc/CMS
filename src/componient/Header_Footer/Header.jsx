@@ -42,11 +42,8 @@ const Header = (props) => {
                             </Offcanvas.Header>
                             <Offcanvas.Body className="nav-body">
                                 <Nav className="justify-content-center flex-grow-1 pe-3">
-                                    <Nav.Link href="#action1">Trang chủ</Nav.Link>
-                                    <Nav.Link href="#action2">Sản phẩm</Nav.Link>
-                                    <Nav.Link href="#action2">Ưu đãi</Nav.Link>
                                     <NavDropdown
-                                        title="Giới thiệu"
+                                        title="Case Studies"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                         style={{ border: "none" }}
 
@@ -60,7 +57,66 @@ const Header = (props) => {
                                             Something else here
                                         </NavDropdown.Item>
                                     </NavDropdown>
-                                    <Nav.Link href="#action2">Hệ thống cửa hàng</Nav.Link>
+                                    <NavDropdown
+                                        title="About Us"
+                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                                        style={{ border: "none" }}
+
+                                    >
+                                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action4">
+                                            Another action
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action5">
+                                            Something else here
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                    <NavDropdown
+                                        title="Resources"
+                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                                        style={{ border: "none" }}
+
+                                    >
+                                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action4">
+                                            Another action
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action5">
+                                            Something else here
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                    <NavDropdown
+                                        title="Careers"
+                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                                        style={{ border: "none" }}
+
+                                    >
+                                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action4">
+                                            Another action
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action5">
+                                            Something else here
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                    <NavDropdown
+                                        title="Contact Us"
+                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                                        style={{ border: "none" }}
+
+                                    >
+                                        <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                                        <NavDropdown.Item href="#action4">
+                                            Another action
+                                        </NavDropdown.Item>
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="#action5">
+                                            Something else here
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
                                 </Nav>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
