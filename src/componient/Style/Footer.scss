@@ -1,0 +1,64 @@
+.section-footer {
+    background-color: #a1b87d;
+    width: 100%;
+    height: auto;
+    padding: 30px 0;
+    color: white;
+    font-size: 15px;
+
+    i {
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    span {
+        cursor: pointer;
+
+        &:hover {
+            color: rgba(57, 133, 228, 1)
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+            color: rgba(57, 133, 228, 1)
+        }
+    }
+
+    .news {
+        background-color: white;
+        padding: 3px 3px;
+        display: flex;
+        justify-content: space-between;
+        border-radius: 100px;
+        margin: 10px 0;
+
+        input {
+            width: 70%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            padding: 0 10px;
+        }
+
+        button {
+            padding: 0 20px;
+            border-radius: 100px;
+            height: 40px;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            white-space: nowrap;
+        }
+    }
+
+    .social_network {
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+    }
+}

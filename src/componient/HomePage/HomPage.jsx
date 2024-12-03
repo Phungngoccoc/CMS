@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../Style/HomePage.scss"
 import Category from "./Section/Category";
 import Collection from "./Section/Collection";
-
+import VideoIntroduction from "./Section/VideoIntroduction";
 const HomePage = () => {
     const settings = {
         dots: true,
@@ -45,6 +45,7 @@ const HomePage = () => {
     };
     return (
         <div className="homepage-container">
+            <VideoIntroduction />
             <div className="slider">
                 <Slider {...settings}>
                     <img src="https://theme.hstatic.net/200000758093/1001198251/14/slider_1.jpg?v=443" alt="Slide 1" />
