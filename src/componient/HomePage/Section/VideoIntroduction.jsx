@@ -8,7 +8,7 @@ const VideoIntroduction = (props) => {
     const [mute, setMute] = useState(true);
 
     return (
-        <div className="position-relative video-introduce">
+        <div className="position-relative video-introduce " >
             <div>
                 <ReactPlayer
                     url={Video}
