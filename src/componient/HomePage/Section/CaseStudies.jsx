@@ -16,7 +16,7 @@ const CaseStudies = (props) => {
                             <button >View all <img src={arrow} /></button>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-6 child-item">
+                    <div className="col-lg-3 col-sm-6 col-12 child-item">
                         <div className="content">
                             <img src={united2} />
                             <div >
@@ -40,7 +40,7 @@ const CaseStudies = (props) => {
                             <button>Learn more <img src={arrow} /></button>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-6 child-item">
+                    <div className="col-lg-3 col-sm-6 col-12 child-item">
                         <div className="content">
                             <img src={united2} />
                             <div >
@@ -64,7 +64,7 @@ const CaseStudies = (props) => {
                             <button>Learn more <img src={arrow} /></button>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-6 child-item">
+                    <div className="col-lg-3 col-sm-6 col-12 child-item">
                         <div className="content">
                             <img src={united2} />
                             <div >
@@ -88,7 +88,7 @@ const CaseStudies = (props) => {
                             <button>Learn more <img src={arrow} /></button>
                         </div>
                     </div>
-                    <div className="col-lg-3 col-6 child-item">
+                    <div className="col-lg-3 col-sm-6 col-12 child-item">
                         <div className="content">
                             <img src={united2} />
                             <div >

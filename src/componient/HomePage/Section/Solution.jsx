@@ -10,7 +10,7 @@ const Solution = (props) => {
         <div className="section-solution">
             <div className="container">
                 <div className="row">
-                    <div className="col-6 left">
+                    <div className="col-md-6 col-12 left">
                         <h4>SOLUTIONS</h4>
                         <h2>One-stop IT Solution</h2>
                         <p>
@@ -23,7 +23,7 @@ const Solution = (props) => {
                         </p>
                         <button >Contact Us <img src={arrow} /></button>
                     </div>
-                    <div className="col-6 right">
+                    <div className="col-md-6 col-12 right">
                         <h5>Wolrd-class IT Outsourcing</h5>
                         <p>
                             CMC Global’s IT Outsourcing solution is the key
