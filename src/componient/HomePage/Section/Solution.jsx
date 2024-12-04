@@ -6,9 +6,6 @@ import digital from "../../../assets/image/digital.webp"
 import cmcSolution from "../../../assets/image/cmc-solutions.webp"
 import model from "../../../assets/image/model.webp"
 const Solution = (props) => {
-    const [playing, setPlaying] = useState(true);
-    const [mute, setMute] = useState(true);
-
     return (
         <div className="section-solution">
             <div className="container">

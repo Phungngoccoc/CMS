@@ -1,0 +1,139 @@
+.section-casestudies {
+    border: 1px solid red;
+    height: auto;
+    font-family: Montserrat, sans-serif;
+    padding: 40px 0 50px 0;
+
+    h4 {
+        color: #189FE0;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px !important;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: #189FE0;
+        }
+    }
+
+    h1 {
+        font-weight: bold;
+    }
+
+    button {
+        background-color: #0a2540;
+        color: white;
+        border: none;
+        outline: none;
+        font-size: 15px;
+        font-family: Montserrat, sans-serif;
+        padding: 10px 16px;
+        border-radius: 5px;
+        transition: all .2s ease-in-out;
+
+        &:hover {
+            cursor: pointer;
+            background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
+        }
+
+        img {
+            margin-left: 10px;
+        }
+    }
+
+    .child-item {
+        position: relative;
+        overflow: hidden;
+
+        .content {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 550px;
+            position: relative;
+            width: 100%;
+            z-index: 5;
+            margin-bottom: 30px;
+
+            img {
+                width: 100%;
+            }
+
+            h5 {
+                margin-top: 30px;
+                font-weight: bold;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 1.5;
+                overflow: hidden;
+            }
+
+            div {
+                padding: 0px 20px;
+            }
+        }
+
+        .content2 {
+            background-color: #0a2540;
+            color: white;
+            padding: 20px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 94%;
+            height: 550px;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.4s ease;
+            border-radius: 10px;
+            z-index: 10;
+            margin-left: 3%;
+
+            button {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #00bbe4;
+                width: 100%;
+            }
+
+            h5 {
+                margin-top: 10px;
+                font-size: 25px;
+                font-weight: bold;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 7;
+                -webkit-box-orient: vertical;
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 1.5;
+                overflow: hidden;
+            }
+        }
+
+        &:hover .content2 {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+}
