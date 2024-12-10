@@ -1,0 +1,107 @@
+.section-partner {
+    background-color: #f6f9fc;
+    font-family: Montserrat, sans-serif;
+    padding: 40px 0;
+
+    h4 {
+        color: #189FE0;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px !important;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: #189FE0;
+        }
+    }
+
+    .partners-slider {
+        height: fit-content;
+        padding: 0px 20px;
+
+        .item {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            // background-color: white;
+            width: 300px;
+            height: 150px;
+            // background-image: url("../../assets/image/digital.webp");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center center;
+            padding: 20px 20px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .slick-slide {
+            padding: 10px
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .section-partner {
+        .partners-slider {
+            .item {
+                width: 100% !important;
+                /* Điều chỉnh chiều rộng cho phù hợp với màn hình nhỏ */
+                height: 70px !important;
+                /* Đảm bảo chiều cao đúng */
+            }
+        }
+    }
+}
+
+
+.slick-prev {
+    // border-radius: 50% !important;
+    z-index: 900 !important;
+    // left: -50px;
+    // background-color: transparent !important;
+}
+
+.slick-next {
+    // border-radius: 50% !important;
+    z-index: 900 !important;
+    // right: -30px;
+}
+
+.slick-next::before,
+.slick-prev::before {
+    color: transparent !important;
+    font-size: 30px;
+    background-color: transparent !important;
+    display: none;
+}
+
+
+/* Tùy chỉnh cho nút prev và next */
+.custom-prev {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000 !important;
+    cursor: pointer;
+}
+
+.custom-next {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #000 !important;
+    cursor: pointer;
+}
+
+.custom-prev:hover,
+.custom-next:hover {
+    color: #007bff !important;
+}

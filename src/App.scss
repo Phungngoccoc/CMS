@@ -1,0 +1,19 @@
+body {
+    font-family: Montserrat, sans-serif !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: #ddd;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #00aeef;
+        border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+}

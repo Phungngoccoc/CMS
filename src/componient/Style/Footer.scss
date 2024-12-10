@@ -1,64 +1,47 @@
 .section-footer {
-    background-color: #a1b87d;
+    background-color: #f5faff;
     width: 100%;
     height: auto;
     padding: 30px 0;
     color: white;
     font-size: 15px;
 
-    i {
-        margin-right: 10px;
-        margin-top: 20px;
-    }
+    .up {
+        span {
+            font-size: 17px;
+            font-weight: bold;
+            color: black;
+            text-transform: uppercase;
+        }
 
-    span {
-        cursor: pointer;
+        p {
+            margin: 50px 0;
+            line-height: 3.0;
 
-        &:hover {
-            color: rgba(57, 133, 228, 1)
+            a {
+                cursor: pointer;
+                font-size: 16px;
+                color: black;
+
+                &:hover {
+                    color: #00aeef
+                }
+            }
         }
     }
 
-    a {
-        text-decoration: none;
-        color: white;
+    .down {
+        color: black;
+        font-size: 16px;
 
-        &:hover {
-            color: rgba(57, 133, 228, 1)
+        .social-network {
+            i {
+                font-size: 20px;
+
+                &:hover {
+                    color: #00aeef;
+                }
+            }
         }
-    }
-
-    .news {
-        background-color: white;
-        padding: 3px 3px;
-        display: flex;
-        justify-content: space-between;
-        border-radius: 100px;
-        margin: 10px 0;
-
-        input {
-            width: 70%;
-            border: none;
-            outline: none;
-            background-color: transparent;
-            padding: 0 10px;
-        }
-
-        button {
-            padding: 0 20px;
-            border-radius: 100px;
-            height: 40px;
-            border: none;
-            outline: none;
-            background-color: black;
-            color: white;
-            white-space: nowrap;
-        }
-    }
-
-    .social_network {
-        display: flex;
-        gap: 30px;
-        margin-top: 20px;
     }
 }

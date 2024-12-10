@@ -1,0 +1,28 @@
+.btn-scroll-to-top {
+    button {
+        position: fixed;
+        bottom: 20%;
+        right: 20px;
+        display: block !important;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #00bbe4;
+        border: none;
+        outline: none;
+        transition: all 0.3s ease;
+        z-index: 10000px;
+        color: white;
+
+        &:hover {
+            transform: scale(1.2);
+            background-color: #00bbe4;
+            color: white;
+        }
+
+        z-index: 999;
+    }
+}

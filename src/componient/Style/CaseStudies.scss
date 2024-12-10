@@ -24,26 +24,56 @@
         font-weight: bold;
     }
 
-    button {
-        background-color: #0a2540;
-        color: white;
-        border: none;
-        outline: none;
-        font-size: 15px;
-        font-family: Montserrat, sans-serif;
+    .button {
+        display: inline-block;
         padding: 10px 16px;
         border-radius: 5px;
-        transition: all .2s ease-in-out;
+        color: #fff;
+        font-size: 1rem;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        text-decoration: none;
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a2540;
+            border-radius: 5px;
+            z-index: -2;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /* Bắt đầu từ bên phải */
+            width: 0%;
+            height: 100%;
+            background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
+            transition: all 0.3s;
+            border-radius: 5px;
+            z-index: -1;
+        }
 
         &:hover {
-            cursor: pointer;
-            background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
-        }
+            color: #0a2540;
+            box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
 
-        img {
-            margin-left: 10px;
+            &:before {
+                width: 100%;
+                // left: 0;
+                // right: auto;
+            }
         }
     }
+
 
     .child-item {
         position: relative;
@@ -84,48 +114,98 @@
             div {
                 padding: 0px 20px;
             }
-        }
 
-        .content2 {
-            background-color: #0a2540;
-            color: white;
-            padding: 20px 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 94%;
-            height: 550px;
-            transform: translateY(100%);
-            opacity: 0;
-            transition: all 0.4s ease;
-            border-radius: 10px;
-            z-index: 10;
-            margin-left: 3%;
-
-            button {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: #00bbe4;
+            .content2 {
+                background-color: #0a2540;
+                color: white;
+                padding: 20px 20px;
+                position: absolute;
+                top: 0;
+                left: 0;
                 width: 100%;
-            }
+                height: 550px;
+                transform: translateY(100%);
+                opacity: 0;
+                transition: all 0.4s ease;
+                border-radius: 10px;
+                z-index: 10;
 
-            h5 {
-                margin-top: 10px;
-                font-size: 25px;
-                font-weight: bold;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
+                .button {
+                    display: inline-block;
+                    padding: 10px 16px;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-size: 1rem;
+                    transition: all 0.3s;
+                    position: relative;
+                    overflow: hidden;
+                    z-index: 1;
+                    text-decoration: none;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
 
-            p {
-                display: -webkit-box;
-                -webkit-line-clamp: 7;
-                -webkit-box-orient: vertical;
-                margin-top: 20px;
-                font-size: 20px;
-                line-height: 1.5;
-                overflow: hidden;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: #0c8ac5;
+                        border-radius: 5px;
+                        z-index: -2;
+
+                    }
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        /* Bắt đầu từ bên phải */
+                        width: 0%;
+                        height: 100%;
+                        background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
+                        transition: all 0.3s;
+                        border-radius: 5px;
+                        z-index: -1;
+                    }
+
+                    &:hover {
+                        color: #0a2540;
+                        box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.5);
+
+                        &:before {
+                            width: 100%;
+                            // left: 0;
+                            // right: auto;
+                        }
+                    }
+                }
+
+                img {
+                    width: 10px;
+                    height: 10px;
+                }
+
+                h5 {
+                    margin-top: 10px;
+                    font-size: 25px;
+                    font-weight: bold;
+                    white-space: normal;
+                }
+
+                p {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 7;
+                    -webkit-box-orient: vertical;
+                    margin-top: 20px;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    overflow: hidden;
+                }
             }
         }
 

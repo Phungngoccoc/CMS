@@ -1,0 +1,213 @@
+.about-us-container {
+    padding-top: 50px !important;
+    height: auto;
+    background-color: #f6f9fc;
+
+    h4 {
+        color: #189FE0;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px !important;
+        font-size: 18px;
+        text-transform: uppercase;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: #189FE0;
+        }
+    }
+
+    .left {
+        height: auto;
+        overflow: visible;
+
+        ul {
+            position: sticky !important;
+            top: 100px;
+            left: 0;
+            padding: 0;
+            list-style-type: none;
+            background-color: white;
+        }
+
+        li {
+            cursor: pointer;
+            padding: 0 18px;
+            font-size: 17px;
+            border-bottom: 2px solid #EFEFEF;
+            display: flex;
+            align-items: center;
+            height: 60px;
+            transition: all 0.2s ease-in;
+
+            &:hover {
+                background-color: #0a2540;
+                color: white;
+
+                .number {
+                    &::after {
+                        border-right: 1px solid white;
+                    }
+                }
+            }
+        }
+
+        .active {
+            background-color: #0a2540;
+            color: white;
+
+            .number {
+                &::after {
+                    border-right: 1px solid white;
+                }
+            }
+        }
+
+        .number {
+            position: relative;
+            padding-right: 10px;
+            font-weight: bold;
+
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                height: 70%;
+                top: 50%;
+                right: 0;
+                transform: translateY(-50%);
+                border-right: 1px solid #3C3C3C;
+            }
+        }
+
+        .text {
+            font-weight: 400;
+            padding-left: 8px;
+            line-height: 20px;
+        }
+    }
+
+    .right {
+        .child {
+            padding: 48px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.2), 4px 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+
+            span {
+                font-size: 26px;
+                font-weight: bolder;
+            }
+
+            p {
+                margin: 10px 0;
+            }
+
+            img {
+                width: 100%;
+            }
+
+            .partner {
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                overflow: hidden;
+                padding: 20px;
+            }
+
+            .exp {
+                background-color: #f3f7fe;
+                width: 45%;
+
+                span {
+                    font-size: 36px;
+                    color: #189FE0;
+                }
+            }
+
+            .item2 {
+                border-radius: 10px;
+                width: 300px;
+                height: 550px;
+                background-image: url("../../assets/image/digital.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .leadership {}
+
+            .item {
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                width: 100%;
+                height: 150px;
+                background-image: url("../../assets/image/digital.webp");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .award {
+
+                .slick-next::before,
+                .slick-prev::before {
+                    color: transparent !important;
+                    font-size: 30px;
+                    background-color: transparent !important;
+                    display: none !important;
+                }
+            }
+        }
+    }
+
+    .slick-prev {
+        // border-radius: 50% !important;
+        z-index: 900 !important;
+        // left: -50px;
+        // background-color: transparent !important;
+    }
+
+    .slick-next {
+        // border-radius: 50% !important;
+        z-index: 900 !important;
+        // right: -30px;
+    }
+
+    .slick-next::before,
+    .slick-prev::before {
+        color: transparent !important;
+        font-size: 30px;
+        background-color: transparent !important;
+        display: none;
+    }
+
+
+    /* Tùy chỉnh cho nút prev và next */
+    .custom-prev {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #000 !important;
+        cursor: pointer;
+    }
+
+    .custom-next {
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #000 !important;
+        cursor: pointer;
+    }
+
+    .custom-prev:hover,
+    .custom-next:hover {
+        color: #007bff !important;
+    }
+
+}
