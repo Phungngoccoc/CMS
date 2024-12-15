@@ -79,6 +79,7 @@
                         text-decoration: none;
                         width: 90px !important;
                         margin: 0 2px;
+                        text-align: center;
 
                         &::after {
                             content: "";
@@ -97,6 +98,22 @@
 
                         &:hover::after {
                             width: 100%;
+                        }
+
+                    }
+
+                    .active {
+                        color: #189FE0 !important;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: -6px;
+                            left: 0;
+                            width: 100% !important;
+                            height: 2px;
+                            background-color: #189FE0;
+                            transition: width 0.3s ease;
                         }
                     }
                 }

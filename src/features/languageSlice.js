@@ -21,7 +21,6 @@ export const languageSlice = createSlice({
             state.language = action.payload;
             localStorage.setItem('language', action.payload);
         },
-
     },
 });
 

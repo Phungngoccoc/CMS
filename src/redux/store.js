@@ -4,8 +4,8 @@ import homeReducer from '../features/homeSlice';
 import headerReducer from '../features/headerSlice';
 import aboutUsReducer from '../features/aboutUsSlice';
 import careerReducer from '../features/careerSlice';
-import libraryReducer from '../features/librarySlice'
-import newsReducer from '../features/newsSlice'
+import libraryReducer from '../features/librarySlice';
+import newsReducer from '../features/newsSlice';
 import projectReducer from '../features/projectSlice';
 export const store = configureStore({
     reducer: {

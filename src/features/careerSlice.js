@@ -1,20 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchDataCareer } from "../services/userServices";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchDataCareer } from '../services/userServices';
 
-export const getDataCareer = createAsyncThunk("dataSlice/fetchData", async () => {
+export const getDataCareer = createAsyncThunk('dataSlice/fetchData', async () => {
     const response = await fetchDataCareer();
     return response.data;
 });
 
 export const careerSlice = createSlice({
-    name: "dataCareer",
+    name: 'dataCareer',
     initialState: {
         dataCareer: null,
         loading: false,
-        error: null
+        error: null,
     },
-    reducers: {
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getDataCareer.pending, (state) => {

@@ -1,0 +1,116 @@
+.career-detail-container {
+    padding: 40px 0;
+    background-color: #f6f9fc;
+
+    .up {
+        .left {
+
+            i {
+                color: black !important;
+            }
+
+            h1 {
+                font-weight: bold;
+                color: #00aeef;
+            }
+
+            p {
+                line-height: 1.5;
+                font-size: 26px;
+            }
+
+            .btn-gadient {
+                display: inline-block;
+                background: -webkit-gradient(linear, left top, left bottom, from(#00aeef), to(#33c7ff));
+                background: linear-gradient(180deg, #00aeef 0%, #33c7ff 100%);
+                color: #fff;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 30px;
+                letter-spacing: .03em;
+                padding: 9px 18px;
+                border-radius: 8px;
+                border: .875px solid rgba(255, 255, 255, 0.21);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+
+                &:hover {
+                    background: linear-gradient(180deg, #84c4db 0%, #28bcf2 100%);
+                }
+            }
+        }
+
+        .right {
+
+            img {
+                width: 100%;
+                height: 350px;
+                float: right;
+            }
+        }
+    }
+
+    .down {
+        h1 {
+            font-weight: bold;
+            color: #00aeef;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: bolder;
+        }
+
+        a {
+            color: #007bff !important;
+            font-weight: bold;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline !important;
+            }
+        }
+
+        .jd-summary {
+            .child {
+                background-color: #ffffff;
+                height: auto;
+                padding-bottom: 30px;
+
+                .child-item {
+                    gap: 20px;
+                    height: 70px;
+                    margin-bottom: 30px;
+
+                    span {
+                        font-size: 20px;
+                        font-weight: bold;
+                    }
+
+                    p {
+                        font-size: 15px;
+                        font-weight: 300;
+                    }
+
+                    .img-jd {
+                        height: 100%;
+
+                        img {
+                            width: 28px;
+                            height: 28px;
+                        }
+                    }
+
+                    a {
+                        color: #007bff;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

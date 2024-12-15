@@ -1,20 +1,19 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchDataNews } from "../services/userServices";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchDataNews } from '../services/userServices';
 
-export const getDataNews = createAsyncThunk("dataNews/fetchData", async () => {
+export const getDataNews = createAsyncThunk('dataNews/fetchData', async () => {
     const response = await fetchDataNews();
     return response.data;
 });
 
 export const newsSlice = createSlice({
-    name: "dataNews",
+    name: 'dataNews',
     initialState: {
         dataNews: null,
         loading: false,
         error: null,
     },
-    reducers: {
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getDataNews.pending, (state) => {

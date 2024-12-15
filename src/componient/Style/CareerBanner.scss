@@ -1,11 +1,12 @@
 .careerbanner-container {
-    background-image: url("../../assets/image/banner.svg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: 80% 10%;
     padding-top: 47.76%;
     position: relative;
     height: auto;
+    background-color: #f0f1f3 !important;
+    color: black !important;
 
     .career-banner-content {
         position: absolute;
@@ -42,6 +43,7 @@
             overflow: hidden;
             z-index: 1;
             text-decoration: none;
+            cursor: pointer;
 
             &:after {
                 content: '';
@@ -96,6 +98,7 @@
         padding-top: 197%;
         background-position: left;
         padding-bottom: 30%;
+        background-image: none !important;
     }
 }
 
@@ -104,5 +107,6 @@
         padding-top: 177%;
         background-position: left;
         padding-bottom: 85%;
+        background-image: none !important;
     }
 }

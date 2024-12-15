@@ -1,20 +1,20 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchListMenu } from "../services/userServices";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { fetchListMenu } from '../services/userServices';
 
-export const getDataHeader = createAsyncThunk("dataHeader/fetchData", async () => {
+export const getDataHeader = createAsyncThunk('dataHeader/fetchData', async () => {
     const response = await fetchListMenu();
-    return response.data;
+    // console.log(response.data)
+    return response.data.data;
 });
 
 export const homeSlice = createSlice({
-    name: "dataHeader",
+    name: 'dataHeader',
     initialState: {
         dataHeader: null,
         loading: false,
         error: null,
     },
-    reducers: {
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder
             .addCase(getDataHeader.pending, (state) => {

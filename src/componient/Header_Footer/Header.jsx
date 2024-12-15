@@ -1,20 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react';
 import '../Style/Header.scss';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import logo from '../../assets/image/logo.svg';
-import testimg from '../../assets/image/test.png'
-import { useNavigate, useLocation } from "react-router-dom";
-import { fetchListMenu } from "../../services/userServices";
-import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { setEnglish, setVietnamese } from '../../features/languageSlice';
-import { useState } from "react";
-import { getAction, path } from "../../utils/constant";
-import { getDataHome } from "../../features/homeSlice";
-import { getDataHeader } from "../../features/headerSlice";
-import { Helmet } from "react-helmet";
+import { useState } from 'react';
+import { getAction, path } from '../../utils/constant';
+import { getDataHeader } from '../../features/headerSlice';
 const Header = React.memo((props) => {
     const [listMenu, setListMenu] = React.useState([]);
     const languageApp = useSelector((state) => state.language.language);
@@ -22,7 +18,7 @@ const Header = React.memo((props) => {
     const navigate = useNavigate();
     const dataHeaderRedux = useSelector((state) => state.dataHeader.dataHeader);
     const location = useLocation();
-
+    const [isOffcanvasOpen, setOffcanvasOpen] = useState(false);
     const getListMenu = async () => {
         if (dataHeaderRedux !== null) {
             // setListMenu(dataHeaderRedux)
@@ -37,30 +33,32 @@ const Header = React.memo((props) => {
     useEffect(() => {
         if (dataHeaderRedux !== null) {
             props.setEnable();
-            setListMenu(dataHeaderRedux)
+            setListMenu(dataHeaderRedux);
             return;
         }
-        props.setEnable();  // props.setDisable();
-    }, [dataHeaderRedux])
+        props.setDisable();
+        // props.setEnable();
+    }, [dataHeaderRedux]);
 
     useEffect(() => {
-
         const valuePath = Object.values(path);
         if (valuePath.includes(location.pathname)) {
             dispatch(getAction[location.pathname]);
         }
-    }, [])
+    }, [location.pathname]);
+
+    // useEffect(() => {
+    //     const valuePath = Object.values(path);
+    //     const basePath = location.pathname.split('/')[1];
+    //     const completePath = `/${basePath}`
+    //     console.log(completePath, location.pathname)
+    //     if (valuePath.includes(completePath)) {
+    //         dispatch(getAction[completePath]);
+    //     }
+    // }, [location.pathname])
 
     const SwitchPage = (path) => {
-        // const valuePath = Object.values(path);
-        // if (valuePath.includes(path)) {
-        //     dispatch(getAction[pathname]);
-        //     const dataPage = useSelector((state) => state.);
-
-        // }
-        // <Helmet>
-        //     <link rel="icon" type="image/png" href={testimg} />
-        // </Helmet>
+        setOffcanvasOpen(false);
         navigate(path);
     };
 
@@ -75,32 +73,36 @@ const Header = React.memo((props) => {
 
     return (
         <div className="header-container">
-            {["lg"].map((expand) => (
-                <Navbar key={expand} expand={expand} className="nav-bar container d-flex justify-content-end">
+            {['lg'].map((expand) => (
+                <Navbar key={expand} expand={expand} className="nav-bar d-flex justify-content-end">
                     <Container fluid className="nav-container">
-                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} className="toggle-menu" />
+                        <Navbar.Toggle
+                            aria-controls={`offcanvasNavbar-expand-${expand}`}
+                            className="toggle-menu"
+                            onClick={() => setOffcanvasOpen(true)}
+                        />
                         <Navbar.Brand href="#" className="d-lg-none d-flex justify-content-center">
-                            <img
-                                className="logo"
-                                src={logo}
-                                alt="Logo"
-                                onClick={() => SwitchPage("/")}
-                            />
+                            <img className="logo" src={logo} alt="Logo" onClick={() => SwitchPage('/')} />
                         </Navbar.Brand>
                         <div className="cover-menu"></div>
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
                             placement="start"
+                            show={isOffcanvasOpen}
+                            onHide={() => setOffcanvasOpen(false)}
                         >
                             <Offcanvas.Header closeButton>
-                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`} style={{ width: "100%", borderBottom: "1px solid #ddd" }}>
+                                <Offcanvas.Title
+                                    id={`offcanvasNavbarLabel-expand-${expand}`}
+                                    style={{ width: '100%', borderBottom: '1px solid #ddd' }}
+                                >
                                     <div className="d-flex justify-content-center mr-5">
                                         <img
                                             className="logo pb-2"
                                             src={logo}
                                             alt="Logo"
-                                            onClick={() => SwitchPage("/")}
+                                            onClick={() => SwitchPage('/')}
                                         />
                                     </div>
                                 </Offcanvas.Title>
@@ -108,26 +110,29 @@ const Header = React.memo((props) => {
                             <Offcanvas.Body className="nav-body">
                                 <Nav className="d-flex justify-content-center flex-grow-1 pe-3">
                                     <div className="menu">
-                                        <div><img
-                                            className="logo d-lg-flex justify-content-center align-items-center d-none"
-                                            src={logo}
-                                            alt="Logo"
-                                            onClick={() => SwitchPage("/")}
-                                        /></div>
+                                        <div>
+                                            <img
+                                                className="logo d-lg-flex justify-content-center align-items-center d-none"
+                                                src={logo}
+                                                alt="Logo"
+                                                onClick={() => SwitchPage('/')}
+                                            />
+                                        </div>
                                         {listMenu?.map((item, index) => {
                                             if (item.status !== 'published') {
                                                 return null;
                                             }
                                             const translation = item.translations.find(
-                                                (trans) => trans.languages_code === languageApp
+                                                (trans) => trans.languages_code === languageApp,
                                             );
+                                            const isActive = location.pathname === `/${item.slug}`;
                                             return (
                                                 <Nav.Link
                                                     key={index}
-                                                    className={`menu-item ${item.slug === "about-us" || item.slug === "careers" ? 'setwidth' : ''}`}
-                                                    onClick={() => SwitchPage(item.slug || "#")}
+                                                    className={`menu-item ${item.slug === 'about-us' || item.slug === 'careers' ? 'setwidth' : ''} ${isActive ? 'active' : ''}`}
+                                                    onClick={() => SwitchPage(item.slug || '#')}
                                                 >
-                                                    {translation?.title || "Untitled"}
+                                                    {translation?.title || 'Untitled'}
                                                 </Nav.Link>
                                             );
                                         })}

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import "../../Style/VideoModal.scss";
-import { useSelector } from "react-redux";
-import ReactPlayer from "react-player";
-import url from "../../../../assets/video/a.mp4";
-import { Modal, ModalBody } from "reactstrap";
+import React, { useState } from 'react';
+import '../../Style/VideoModal.scss';
+import { useSelector } from 'react-redux';
+import ReactPlayer from 'react-player';
+import url from '../../../../assets/video/a.mp4';
+import { Modal, ModalBody } from 'reactstrap';
 
 const VideoModal = React.memo((props) => {
     const { isOpen, toggleModal, videoUrl } = props; // Nhận trạng thái mở, hàm toggle và URL video qua props
