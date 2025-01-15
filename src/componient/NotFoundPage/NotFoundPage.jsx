@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { path } from '../../utils/constant';
 
-// import '../../Style/NotFoundPage.scss'
 const NotFoundPage = React.memo(() => {
+    const navigate = useNavigate();
+    useEffect(() => {
+        navigate(path.HOME);
+    });
     return (
         <>
             <div className="not-found-page-container">

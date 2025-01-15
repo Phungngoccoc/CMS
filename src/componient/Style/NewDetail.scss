@@ -2,6 +2,10 @@
     padding: 40px 0;
     background-color: #f5faff;
 
+    .video-page {
+        width: 100%;
+    }
+
     .left {
         height: auto;
         background-color: #ffffff;
@@ -15,7 +19,7 @@
                 border-bottom: 1px solid #ccc;
 
                 span {
-                    font-size: 12px;
+                    font-size: 16px !important;
 
                     i {
                         font-weight: bold;
@@ -24,7 +28,7 @@
             }
 
             .content {
-                border-bottom: 1px solid #ccc;
+                border: none !important;
             }
 
             .bottom {
@@ -52,6 +56,7 @@
 
             p {
                 font-size: 16px;
+                text-align: justify;
             }
 
             img {
@@ -70,7 +75,6 @@
             border-radius: 10px;
             height: 100%;
             overflow: visible;
-            // position: relative;
 
             .up {
                 background-color: #0a2540;

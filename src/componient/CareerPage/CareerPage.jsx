@@ -1,80 +1,101 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import '../Style/CareerPage.scss';
 import CareerBanner from './Section/CareerBanner';
 import ListJob from './Section/ListJob';
 import { Helmet } from 'react-helmet-async';
-import { useDispatch, useSelector } from 'react-redux';
-import { STATUS } from '../../utils/constant';
+import { useSelector } from 'react-redux';
+import { STATUS, path } from '../../utils/constant';
+import { fetchDataCareerPage } from '../../services/userServices';
+
 const CareerPage = React.memo(() => {
-    const dispatch = useDispatch();
-    const { dataCareer, loading, error } = useSelector((state) => state.dataCareer);
-    const languageApp = useSelector((state) => state.language.language);
+    const listJobRef = useRef(null);
+    const scrollToListJob = () => {
+        if (listJobRef.current) {
+            const offset = listJobRef.current.offsetTop - 50;
+            window.scrollTo({ top: offset, behavior: 'smooth' });
+        }
+    };
+
+    const { dataCareer } = useSelector((state) => state.dataCareer);
     const [dataCareerPage, setDataCareerPage] = useState([]);
+    const [dataJob, setDataJob] = useState([]);
+    const companyInfor = useSelector((state) => state.companyInfor.companyInfor);
 
     const TYPE_BLOCK = {
-        block_careers: CareerBanner,
-        block_list_job: ListJob,
+        block_careers_banner: CareerBanner,
+        block_carrers_list_job: ListJob,
     };
     const KEY_TYPE_BLOCK = Object.keys(TYPE_BLOCK);
 
     useEffect(() => {
-        if (dataCareer?.data?.status === STATUS.PUBLISH) {
-            const translations = dataCareer.data.translations;
-            const blocksBanner = [];
-            const blockListJob = [];
-            const blockDataCareerPage = [];
-
-            translations.forEach((translation) => {
-                if (translation.languages_code === languageApp) {
-                    translation.blocks.forEach((block) => {
-                        if (block.item?.status === STATUS.PUBLISH) {
-                            if (block.collection === 'block_careers') {
-                                blocksBanner.push(block);
-                            } else if (block.collection === 'block_list_job') {
-                                blockListJob.push(block);
-                            }
-                        }
-                    });
-                }
-            });
-
-            blockDataCareerPage.push(...blocksBanner);
-            blockDataCareerPage.push({ blockListJob });
-
-            setDataCareerPage(blockDataCareerPage);
+        if (dataCareer !== null) {
+            const blocksToUpdate = dataCareer.data.filter((item) => item.status === STATUS.PUBLISH);
+            setDataJob(blocksToUpdate);
         }
-    }, [dataCareer, languageApp]);
+    }, [dataCareer]);
+
+    useEffect(() => {
+        const fetchDataPage = async () => {
+            try {
+                const res = await fetchDataCareerPage();
+                if (res?.status < 400) {
+                    const data = res.data?.data;
+                    if (data.status === STATUS.PUBLISH) {
+                        const blocksToUpdate = data?.blocks?.filter(
+                            (ele) => KEY_TYPE_BLOCK.includes(ele?.collection) && ele?.item?.status === STATUS.PUBLISH,
+                        );
+                        setDataCareerPage(blocksToUpdate);
+                    }
+                }
+            } catch (error) {
+                if (import.meta.env.VITE_ENVIRONMENT === 'DEVELOPMENT') {
+                    console.error(error.message);
+                }
+            }
+        };
+        fetchDataPage();
+    }, []);
 
     return (
         <>
             <Helmet>
-                <title>CMC - Career Archive - Global</title>
+                <title>{`Career Opportunities at - ${companyInfor?.data?.[0]?.company_name}`}</title>
+                <meta
+                    name="description"
+                    content={`Explore exciting career opportunities at ${companyInfor?.data?.[0]?.company_name}. Join our team and grow your career with us.`}
+                />
+                <meta
+                    property="og:title"
+                    content={`Career Opportunities at - ${companyInfor?.data?.[0]?.company_name}`}
+                />
+                <meta
+                    property="og:description"
+                    content={`Explore exciting career opportunities at ${companyInfor?.data?.[0]?.company_name}. Join our team and grow your career with us.`}
+                />
+                <meta
+                    property="og:image"
+                    content={`${import.meta.env.VITE_BACKEND_URL}/assets/${companyInfor?.data?.[0]?.icon_logo}`}
+                />
+                <meta property="og:url" content={`${import.meta.env.VITE_URL_FRONTEND}${path.CAREER}`} />
+                <meta property="og:type" content="website" />
             </Helmet>
             {dataCareerPage.map((item, index) => {
-                if (KEY_TYPE_BLOCK.includes(item.collection)) {
-                    const BlockComponent = TYPE_BLOCK[item.collection];
-                    return BlockComponent ? (
-                        <div key={index}>
-                            <BlockComponent data={item} />
+                const BlockComponent = TYPE_BLOCK[item.collection];
+
+                if (BlockComponent === TYPE_BLOCK['block_carrers_list_job']) {
+                    return (
+                        <div key={index} ref={listJobRef}>
+                            <BlockComponent data={dataJob} title={item} />
                         </div>
-                    ) : null;
+                    );
+                } else if (BlockComponent === TYPE_BLOCK['block_careers_banner']) {
+                    return (
+                        <div key={index}>
+                            <BlockComponent data={item} onButtonClick={scrollToListJob} />
+                        </div>
+                    );
                 } else {
-                    if (item?.blockListJob?.length > 0) {
-                        const list_map = item.blockListJob;
-
-                        const list_job = list_map
-                            .map((ele) => {
-                                if (KEY_TYPE_BLOCK.includes('block_list_job')) {
-                                    return ele;
-                                }
-                            })
-                            .filter((item) => !!item);
-
-                        if (list_job?.length > 0) {
-                            const BlockComponent = TYPE_BLOCK['block_list_job'];
-                            return BlockComponent ? <BlockComponent key={index} data={list_job} /> : null;
-                        }
-                    }
+                    return BlockComponent ? <BlockComponent key={index} data={item} /> : null;
                 }
             })}
         </>

@@ -1,65 +1,118 @@
 import React, { useEffect, useState } from 'react';
-import united2 from '../../../assets/image/Untitled-2.webp';
 import arrow from '../../../assets/image/arrow-right.svg';
-import global from '../../../assets/image/cmc-global.webp';
 import '../../Style/Project.scss';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { LANGUAGES, path } from '../../../utils/constant';
+import ReactPaginate from 'react-paginate';
+import { fetchDataProjectPerPage } from '../../../services/userServices';
 const Project = React.memo((props) => {
-    useEffect(() => {}, [props]);
     const navigate = useNavigate();
-    // Giới hạn tối đa 12 phần tử
-    const itemsToRender = props?.data?.item?.list?.slice(0, 12);
+    const [itemsToRender, setItemsToRender] = useState([]);
+    const companyInfor = useSelector((state) => state.companyInfor.companyInfor);
+    const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const languageApp = useSelector((state) => state.language.language);
+    const [projects, setProjects] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(0);
+    const [itemsPerPage] = useState(6);
+    const fetchProjects = async (page = 0) => {
+        const offset = page * itemsPerPage;
+        const res = await fetchDataProjectPerPage(itemsPerPage, offset);
+        if (res.status < 400) {
+            setProjects(res.data.data);
+            setPageCount(Math.ceil(res.data?.meta?.total_count / itemsPerPage));
+        }
+    };
+    useEffect(() => {
+        fetchProjects(currentPage);
+    }, [currentPage]);
+    useEffect(() => {
+        if (props?.data) {
+            setItemsToRender(props.data);
+        }
+    }, [props]);
+
     const handleClick = (title) => {
-        navigate(`/projects/${encodeURIComponent(title)}`);
+        navigate(`${path.PROJECTS}/${encodeURIComponent(title)}`);
+    };
+    const handlePageClick = (data) => {
+        setCurrentPage(data.selected);
     };
     return (
         <>
-            {props?.data && (
+            {projects?.length > 0 && (
                 <div className="project-container">
                     <div className="container">
-                        <h4>{props.data.item?.header}</h4>
+                        {props?.title?.translations?.map((item, index) => {
+                            if (item.languages_code === languageApp) {
+                                return <h4 key={index}>{item?.title}</h4>;
+                            }
+                        })}
                         <div className="row">
-                            {itemsToRender?.map((ele, index) => (
-                                <div className="col-lg-4 col-sm-6 col-12 child-item" key={index}>
-                                    <div className="content">
-                                        <img
-                                            src={`${import.meta.env.VITE_BACKEND_URL}/assets/${ele?.item?.image}`}
-                                            alt={ele.item.title}
-                                        />
-                                        <div>
-                                            <h5>{ele?.item?.title}</h5>
-                                            <p>{ele?.item?.content}</p>
-                                        </div>
-                                        <div className="company-logo">
-                                            <img src={global} className="logo" alt="CMC Global" />
-                                            <span>CMC Global</span>
-                                        </div>
-                                        <div className="content2">
-                                            <div
-                                                className="p-0 d-flex flex-column justify-content-between"
-                                                style={{ height: '100%' }}
-                                            >
-                                                <div className="p-0">
-                                                    <h5>{ele?.item?.title}</h5>
-                                                    <p>{ele?.item?.content}</p>
-                                                </div>
-                                                <div className="mb-3 p-0">
-                                                    <a
-                                                        className="button mb-3"
-                                                        onClick={() => handleClick(ele?.item?.id)}
-                                                    >
-                                                        Learn more <img src={arrow} alt="Arrow" />
-                                                    </a>
-                                                    <img src={global} className="logo" alt="CMC Global" />
-                                                    <span>CMC Global</span>
+                            {projects.map((ele) => {
+                                const translatedItems = ele?.translations?.filter(
+                                    (item) => item.languages_code === languageApp,
+                                );
+
+                                return translatedItems.map((item, index) => (
+                                    <div className="col-lg-4 col-sm-6 col-12 child-item" key={`${ele.id}-${index}`}>
+                                        <div className="content">
+                                            <img src={`${backendUrl}/assets/${ele?.image}`} alt={item?.content_main} />
+                                            <div>
+                                                <h5>{item?.content_main}</h5>
+                                                <p>{item?.content}</p>
+                                            </div>
+                                            <div className="company-logo">
+                                                <img
+                                                    src={`${backendUrl}/assets/${companyInfor?.data?.[0]?.icon_logo}`}
+                                                    className="logo"
+                                                    alt="company-logo"
+                                                />
+                                                <span>{companyInfor?.data[0]?.company_name}</span>
+                                            </div>
+                                            <div className="content2">
+                                                <div
+                                                    className="p-0 d-flex flex-column justify-content-between"
+                                                    style={{ height: '100%' }}
+                                                >
+                                                    <div className="p-0">
+                                                        <h5>{item?.content_main}</h5>
+                                                        <p>{item?.content}</p>
+                                                    </div>
+                                                    <div className="mb-3 p-0">
+                                                        <a className="button mb-3" onClick={() => handleClick(ele?.id)}>
+                                                            {languageApp === LANGUAGES.EN ? 'Learn more' : 'Xem thêm'}{' '}
+                                                            <img src={arrow} alt="Arrow" />
+                                                        </a>
+                                                        <img
+                                                            src={`${backendUrl}/assets/${companyInfor?.data?.[0]?.icon_logo}`}
+                                                            className="logo"
+                                                            alt="company-logo"
+                                                        />
+                                                        <span>{companyInfor?.data[0]?.company_name}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            ))}
+                                ));
+                            })}
                         </div>
                     </div>
+                    {projects?.length > 0 && (
+                        <ReactPaginate
+                            previousLabel={languageApp === LANGUAGES.EN ? 'Previous' : 'Trước'}
+                            nextLabel={languageApp === LANGUAGES.EN ? 'Next' : 'Sau'}
+                            breakLabel={'...'}
+                            pageCount={pageCount}
+                            marginPagesDisplayed={2}
+                            pageRangeDisplayed={3}
+                            onPageChange={handlePageClick}
+                            containerClassName={'pagination'}
+                            activeClassName={'active'}
+                        />
+                    )}
                 </div>
             )}
         </>

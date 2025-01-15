@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-// Kiểm tra ngôn ngữ từ localStorage
 const initialLanguage = localStorage.getItem('language') || 'en';
 
 export const languageSlice = createSlice({

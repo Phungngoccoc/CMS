@@ -1,5 +1,6 @@
 .video-gallery-container {
     padding: 40px 0;
+    height: 100vh;
 
     h4 {
         color: #189FE0;
@@ -67,7 +68,6 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            /* Bắt đầu từ bên phải */
             width: 0%;
             height: 100%;
             background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
@@ -88,11 +88,13 @@
         }
     }
 
+    
 }
 
-.modal-content {
-    background-color: transparent !important;
 
-    // max-width: none !important;
-    // width: 12200px !important;
+@media (max-width: 1492px) {
+    .video-gallery-container {
+        padding: 40px 0;
+        height: auto;
+    }
 }

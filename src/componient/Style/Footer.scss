@@ -1,5 +1,4 @@
 .section-footer {
-    background-color: #f5faff;
     width: 100%;
     height: auto;
     padding: 30px 0;
@@ -7,6 +6,9 @@
     font-size: 15px;
 
     .up {
+        display: flex;
+        justify-content: space-between;
+
         span {
             font-size: 17px;
             font-weight: bold;
@@ -17,11 +19,14 @@
         p {
             margin: 50px 0;
             line-height: 3.0;
+            color: black;
 
-            a {
+            span {
                 cursor: pointer;
                 font-size: 16px;
                 color: black;
+                text-transform: none;
+                font-weight: normal;
 
                 &:hover {
                     color: #00aeef
@@ -37,6 +42,8 @@
         .social-network {
             i {
                 font-size: 20px;
+                cursor: pointer;
+                color: black;
 
                 &:hover {
                     color: #00aeef;

@@ -1,10 +1,9 @@
 .section-award {
   background-color: #f6f9fc;
-  font-family: Montserrat, sans-serif;
   padding: 40px 0;
 
   h4 {
-    color: #189fe0;
+    color: var(--color-title);
     position: relative;
     display: inline-block;
     margin-bottom: 20px !important;
@@ -16,7 +15,7 @@
       left: 0;
       width: 25px;
       height: 2px;
-      background-color: #189fe0;
+      background-color: var(--color-title);
     }
   }
 
@@ -47,16 +46,11 @@
   }
 
   .slick-prev {
-    // border-radius: 50% !important;
-    z-index: 900 !important;
-    // left: -50px;
-    // background-color: transparent !important;
+    z-index: 98 !important;
   }
 
   .slick-next {
-    // border-radius: 50% !important;
-    z-index: 900 !important;
-    // right: -30px;
+    z-index: 98 !important;
   }
 
   .slick-next::before,
@@ -67,7 +61,6 @@
     display: none;
   }
 
-  /* Tùy chỉnh cho nút prev và next */
   .custom-prev {
     background: none;
     border: none;
@@ -95,9 +88,7 @@
     .awards-slider {
       .item {
         width: 100% !important;
-        /* Điều chỉnh chiều rộng cho phù hợp với màn hình nhỏ */
-        height: 70px !important;
-        /* Đảm bảo chiều cao đúng */
+        height: 110px !important;
       }
     }
   }

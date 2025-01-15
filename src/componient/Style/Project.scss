@@ -4,7 +4,7 @@
     padding: 40px 0;
 
     h4 {
-        color: #189FE0;
+        color: var(--color-title);
         position: relative;
         display: inline-block;
         margin-bottom: 20px !important;
@@ -17,7 +17,7 @@
             left: 0;
             width: 25px;
             height: 2px;
-            background-color: #189FE0;
+            background-color: var(--color-title);
         }
     }
 
@@ -36,8 +36,12 @@
             z-index: 5;
             margin-bottom: 30px;
             box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1), -3px -3px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
 
             .company-logo {
+                position: absolute;
+                bottom: 20px;
+
                 .logo {
                     width: 40px;
                     height: 40px;
@@ -49,6 +53,7 @@
 
             img {
                 width: 100%;
+                aspect-ratio: 16/10;
             }
 
             h5 {

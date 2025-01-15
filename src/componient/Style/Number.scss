@@ -1,0 +1,45 @@
+.numbers-container {
+    padding: 40px 0;
+
+    h4 {
+        color: var(--color-title);
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-title);
+        }
+    }
+
+    .child {
+        background-color: #fbfbfb;
+        border: 1px solid black;
+
+        .number {
+
+
+            label {
+                font-size: 18px !important;
+            }
+        }
+
+        .number span:not(:last-child) {
+            transform: translateY(10px);
+        }
+    }
+
+    span {
+        font-size: 55px !important;
+        font-weight: bolder !important;
+        color: #141E8C !important;
+        margin-bottom: 10px !important;
+        text-align: center !important;
+    }
+}

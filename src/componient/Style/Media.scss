@@ -1,9 +1,8 @@
 .section-media {
     padding: 40px 10px;
-    font-family: Montserrat, sans-serif;
 
     h4 {
-        color: #189FE0;
+        color: var(--color-title);
         position: relative;
         display: inline-block;
         margin-bottom: 20px !important;
@@ -15,7 +14,7 @@
             left: 0;
             width: 25px;
             height: 2px;
-            background-color: #189FE0;
+            background-color: var(--color-title);
         }
     }
 
@@ -41,7 +40,7 @@
             }
         }
 
-        a {
+        label {
             text-decoration: none;
             font-size: 22px;
             color: black;
@@ -76,7 +75,7 @@
         // border: 1px solid red;
         padding: 30px 30px;
 
-        a {
+        label {
             text-decoration: none;
             font-size: 22px;
             color: black;
@@ -91,6 +90,16 @@
             &:hover {
                 color: #189FE0;
             }
+        }
+
+        p {
+            margin-top: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3 !important;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 300 !important;
         }
 
         .child-post {

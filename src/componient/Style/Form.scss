@@ -1,11 +1,14 @@
 .form-container {
-    font-family: Montserrat, sans-serif;
     // background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
     height: auto;
     padding: 40px 5px;
 
+    .error {
+        color: red;
+    }
+
     h4 {
-        color: #189FE0;
+        color: var(--color-title);
         position: relative;
         display: inline-block;
         margin-bottom: 40px !important;
@@ -19,7 +22,7 @@
             left: 0;
             width: 25px;
             height: 2px;
-            background-color: #189FE0;
+            background-color: var(--color-title);
         }
     }
 
@@ -44,10 +47,17 @@
                 background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
                 transition: all 0.3s ease-in-out;
 
+                a {
+                    color: #0a2540;
+                }
+
                 &:hover {
                     transform: scale(1.1);
-                    color: rgb(82, 204, 220);
                     background: #0a2540;
+
+                    a {
+                        color: white !important;
+                    }
                 }
             }
         }
@@ -58,7 +68,7 @@
             display: inline-block;
             padding: 10px 16px;
             border-radius: 5px;
-            color: #fff;
+            color: white;
             font-size: 1rem;
             transition: all 0.3s;
             position: relative;
@@ -70,18 +80,33 @@
             align-items: center;
             justify-content: space-between;
             cursor: pointer;
-
-            &:after {
-                content: '';
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: #0a2540;
-                border-radius: 5px;
-                z-index: -2;
-            }
+            background-color: #0a2540;
+            border: none !important;
         }
+    }
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    z-index: 99 !important;
+}
+
+.space-footer {
+    height: 100vh;
+}
+
+@media (max-width: 1492px) {
+    .space-footer {
+        padding: 40px 0;
+        height: auto;
+    }
+}
+
+@media (max-width: 853px) {
+    .map {
+        margin-top: 20px !important;
+        min-height: 300px;
+        padding: 0 !important;
     }
 }

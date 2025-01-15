@@ -1,42 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import '../../Style/VideoIntroduction.scss';
-import ReactPlayer from 'react-player';
-
+import Slider from 'react-slick';
+import { STATUS } from '../../../utils/constant';
+import Video from './Video';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const VideoIntroduction = React.memo((props) => {
-    const [playing, setPlaying] = useState(true);
-    const [mute, setMute] = useState(true);
-    const [url, setUrl] = useState(null);
+    const CustomPrevArrow = ({ className, onClick }) => (
+        <button className={`${className} custom-prev`} onClick={onClick} aria-label="Previous"></button>
+    );
 
+    const CustomNextArrow = ({ className, onClick }) => (
+        <button className={`${className} custom-next`} onClick={onClick} aria-label="Next"></button>
+    );
+
+    const settings = {
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: <CustomPrevArrow />,
+        nextArrow: <CustomNextArrow />,
+        draggable: true,
+    };
     useEffect(() => {
-        if (props?.url_video) {
-            setUrl(`${import.meta.env.VITE_BACKEND_URL}/assets/${props.url_video}`);
-        }
-    }, [props]);
-
+        AOS.init({
+            duration: 1000,
+            offset: 200,
+            easing: 'ease-in-out',
+            once: false,
+        });
+    }, []);
     return (
-        <div className="position-relative video-introduce">
-            {url && (
-                <div>
-                    <ReactPlayer
-                        url={url}
-                        playing={playing}
-                        loop={true}
-                        controls={false}
-                        volume={mute ? 0 : 1}
-                        muted={mute}
-                        width="100%"
-                        height="100%"
-                    />
-                </div>
-            )}
-            <div className="position-absolute btn-play">
-                <button onClick={() => setPlaying(!playing)}>
-                    <i className={`fa ${playing ? 'fa-pause' : 'fa-play'}`}></i>
-                </button>
-
-                <button onClick={() => setMute(!mute)}>
-                    <i className={`fa ${mute ? 'fa-volume-off' : 'fa-volume-up'}`}></i>
-                </button>
+        <div className="cover">
+            <div className="position-relative video-introduce" data-aos="fade">
+                {props?.data?.item?.status === STATUS.PUBLISH && (
+                    <Slider {...settings} className="p-0 m-0">
+                        {props?.data?.item?.videos?.map((item, index) => (
+                            <Video url_video={item.directus_files_id} key={index} />
+                        ))}
+                    </Slider>
+                )}
             </div>
         </div>
     );

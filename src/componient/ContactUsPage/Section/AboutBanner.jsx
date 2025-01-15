@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import arrow from '../../../assets/image/arrow-right.svg';
+import React from 'react';
 import '../../Style/AboutBanner.scss';
 import { STATUS } from '../../../utils/constant';
+import { useSelector } from 'react-redux';
 const AboutBanner = React.memo((props) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL;
+    const languageApp = useSelector((state) => state.language.language);
     return (
         <>
             {props?.data?.item?.status === STATUS.PUBLISH && (
@@ -13,19 +14,21 @@ const AboutBanner = React.memo((props) => {
                 >
                     <div className="container">
                         <div>
-                            <h4>{props.data.item?.title}</h4>
+                            {props.data.item?.translations?.map((ele, z) => {
+                                if (ele?.languages_code === languageApp) {
+                                    return <h4 key={z}>{ele?.title}</h4>;
+                                }
+                            })}
                             <div className="d-flex alight-items-center __moving-text">
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
-                                <p className="text-nowrap mx-3 flex-shrink-0">{props.data.item?.content}</p>
+                                {props.data.item?.translations?.map((ele, z) => {
+                                    if (ele?.languages_code === languageApp) {
+                                        return (
+                                            <p key={z} className="text-nowrap mx-3 flex-shrink-0">
+                                                {ele?.content}
+                                            </p>
+                                        );
+                                    }
+                                })}
                             </div>
                         </div>
                     </div>

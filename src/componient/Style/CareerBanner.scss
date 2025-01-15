@@ -2,7 +2,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 80% 10%;
-    padding-top: 47.76%;
+    padding-top: 57.76%;
     position: relative;
     height: auto;
     background-color: #f0f1f3 !important;
@@ -30,6 +30,7 @@
             margin: 30px 0px;
             margin-right: 25px;
             // padding-right: 30px;
+            text-align: justify;
         }
 
         .button {
@@ -89,24 +90,30 @@
     .careerbanner-container {
         padding-top: 82%;
         background-position: 62%;
-        padding-bottom: 25%;
+        padding-bottom: 35%;
     }
 }
 
-@media (min-width: 377px) and (max-width: 767px) {
+@media (min-width: 414px) and (max-width: 767px) {
+    .careerbanner-container {
+        padding-top: 187%;
+        background-position: left;
+        padding-bottom: 25%;
+        background-image: none !important;
+    }
+}
+
+@media (min-width: 282px) and (max-width: 413px) {
     .careerbanner-container {
         padding-top: 197%;
         background-position: left;
-        padding-bottom: 30%;
+        padding-bottom: 58%;
         background-image: none !important;
-    }
-}
 
-@media (min-width: 282px) and (max-width: 376px) {
-    .careerbanner-container {
-        padding-top: 177%;
-        background-position: left;
-        padding-bottom: 85%;
-        background-image: none !important;
+        .career-banner-content {
+            h1 {
+                font-size: 64px;
+            }
+        }
     }
 }

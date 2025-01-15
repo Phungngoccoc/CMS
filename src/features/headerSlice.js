@@ -3,7 +3,6 @@ import { fetchListMenu } from '../services/userServices';
 
 export const getDataHeader = createAsyncThunk('dataHeader/fetchData', async () => {
     const response = await fetchListMenu();
-    // console.log(response.data)
     return response.data.data;
 });
 

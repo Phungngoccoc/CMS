@@ -7,6 +7,12 @@ import careerReducer from '../features/careerSlice';
 import libraryReducer from '../features/librarySlice';
 import newsReducer from '../features/newsSlice';
 import projectReducer from '../features/projectSlice';
+import isShowVideoReducer from '../features/isShowVideoSlice';
+import blogSlideReducer from '../features/blogSlice';
+import companyInforReducer from '../features/companyInfor';
+import corporationReducer from '../features/corporationSlide';
+
+// Dat ten cua reducer trong store trung voi state cua no
 export const store = configureStore({
     reducer: {
         language: languageReducer,
@@ -17,6 +23,10 @@ export const store = configureStore({
         dataLibrary: libraryReducer,
         dataNews: newsReducer,
         dataProject: projectReducer,
+        dataBlog: blogSlideReducer,
+        isShowVideo: isShowVideoReducer,
+        companyInfor: companyInforReducer,
+        dataCorporation: corporationReducer,
     },
 });
 

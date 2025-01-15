@@ -1,0 +1,34 @@
+.general-introduction-container {
+    padding: 40px 0;
+
+    img {
+        width: 100%;
+    }
+
+    h4 {
+        color: var(--color-title);
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-title);
+        }
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    .up {
+        font-size: 14px;
+    }
+
+    .down {}
+}

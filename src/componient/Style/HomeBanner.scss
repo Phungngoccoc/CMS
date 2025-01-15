@@ -1,0 +1,24 @@
+.about-banner-container {
+    padding: 0;
+    background-size: cover;
+    overflow: hidden;
+    margin-top: -10px;
+
+    .__moving-text {
+        animation: textMoving 180s linear infinite;
+        color: white;
+        font-size: 70px;
+        font-weight: 700;
+        position: relative;
+    }
+
+    @keyframes textMoving {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-600%);
+        }
+    }
+}

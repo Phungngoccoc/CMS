@@ -1,30 +1,29 @@
 .about-banner-container {
-    background-image: url("../../assets//image/moving-bg.webp");
     padding: 0;
     background-size: cover;
     overflow: hidden;
 
     h4 {
-        color: white;
+        color: var(--color-title);
         position: relative;
         display: inline-block;
         margin-top: 20px;
 
         &::after {
-            content: "";
+            content: '';
             position: absolute;
             bottom: -6px;
             left: 0;
             width: 25px;
             height: 2px;
-            background-color: white;
+            background-color: var(--color-title);
         }
     }
 
     .__moving-text {
         animation: textMoving 180s linear infinite;
         color: white;
-        font-size: 70px;
+        font-size: 50px;
         font-weight: 700;
         position: relative;
     }
@@ -38,5 +37,4 @@
             transform: translateX(-600%);
         }
     }
-
 }

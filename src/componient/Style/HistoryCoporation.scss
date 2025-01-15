@@ -1,0 +1,156 @@
+.history-coporation-container {
+    padding: 40px 0;
+    background-color: #f6f9fc;
+    height: auto;
+
+    .text_end {
+        h3 {
+            text-align: end;
+        }
+    }
+
+    .text_start {
+        h3 {
+            text-align: start;
+        }
+    }
+
+    h4 {
+        color: var(--color-title);
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: var(--color-title);
+        }
+    }
+
+
+
+    .content {
+
+        .child {
+
+            h3 {
+                font-size: 26px;
+                font-weight: bolder;
+                color: #1b3aad;
+                margin-bottom: 20px;
+            }
+
+            ul {
+                list-style-type: disc;
+
+                li {
+                    font-size: 15px;
+                    color: #3c3c3c;
+                    text-align: justify;
+                }
+            }
+        }
+    }
+
+    .left {
+        height: auto;
+
+        h3 {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #1b3aad;
+            font-weight: bold;
+        }
+
+        li {
+            font-size: 15px;
+            color: #3c3c3c !important;
+        }
+    }
+
+    .right {
+        h3 {
+            margin-top: 20px;
+            font-size: 36px;
+            color: #1b3aad;
+            font-weight: bold;
+        }
+
+        li {
+            font-size: 15px;
+            color: #3c3c3c !important;
+        }
+    }
+
+    .center {
+        img {
+            height: 2002px;
+            width: 18px;
+        }
+    }
+
+    .empty {
+        height: 207px;
+    }
+
+    .empty-2 {
+        height: 280px;
+    }
+
+    .empty-3 {
+        height: 280px;
+    }
+
+    .empty-4 {
+        height: 300px;
+    }
+
+    .empty-5 {
+        height: 300px;
+    }
+
+    .empty-6 {
+        height: 320px;
+    }
+
+    .empty-7 {
+        height: 340px;
+    }
+}
+
+@media (max-width: 1357px) {
+    .empty-6 {
+        height: 220px !important;
+    }
+
+    .empty-7 {
+        height: 230px !important;
+    }
+}
+
+@media (max-width: 1194px) {
+    .empty-2 {
+        height: 180px !important;
+    }
+
+    .empty-3 {
+        height: 220px !important;
+    }
+
+    .empty-5 {
+        height: 220px !important;
+    }
+
+    .empty-6 {
+        height: 220px !important;
+    }
+
+    .empty-7 {
+        height: 280px !important;
+    }
+}

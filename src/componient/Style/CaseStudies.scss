@@ -1,10 +1,9 @@
 .section-casestudies {
     height: auto;
-    font-family: Montserrat, sans-serif;
     padding: 40px 0 50px 0;
 
     h4 {
-        color: #189FE0;
+        color: var(--color-title);
         position: relative;
         display: inline-block;
         margin-bottom: 20px !important;
@@ -16,7 +15,7 @@
             left: 0;
             width: 25px;
             height: 2px;
-            background-color: #189FE0;
+            background-color: var(--color-title);
         }
     }
 
@@ -54,7 +53,6 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            /* Bắt đầu từ bên phải */
             width: 0%;
             height: 100%;
             background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
@@ -84,27 +82,31 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             overflow: hidden;
-            height: 550px;
+            height: 500px;
             position: relative;
             width: 100%;
             z-index: 5;
             margin-bottom: 30px;
+            padding-bottom: 520px;
 
             img {
                 width: 100%;
+                aspect-ratio: 16/11;
             }
 
             h5 {
-                margin-top: 30px;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                margin-top: 20px;
                 font-weight: bold;
-                white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
 
             p {
                 display: -webkit-box;
-                -webkit-line-clamp: 7;
+                -webkit-line-clamp: 6;
                 -webkit-box-orient: vertical;
                 margin-top: 20px;
                 font-size: 20px;
@@ -124,12 +126,13 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 550px;
+                height: 500px;
                 transform: translateY(100%);
                 opacity: 0;
                 transition: all 0.4s ease;
                 border-radius: 10px;
                 z-index: 10;
+                padding-bottom: 520px;
 
                 .button {
                     display: inline-block;
@@ -142,10 +145,13 @@
                     overflow: hidden;
                     z-index: 1;
                     text-decoration: none;
-                    width: 100%;
+                    width: 87%;
                     display: flex;
                     align-items: center;
                     justify-content: space-between;
+                    position: absolute;
+                    bottom: 10%;
+                    right: 6%;
 
                     &:after {
                         content: '';
@@ -165,7 +171,6 @@
                         position: absolute;
                         bottom: 0;
                         right: 0;
-                        /* Bắt đầu từ bên phải */
                         width: 0%;
                         height: 100%;
                         background-image: linear-gradient(to right, rgb(82, 204, 220), rgb(192, 192, 224));
@@ -192,6 +197,9 @@
                 }
 
                 h5 {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
                     margin-top: 10px;
                     font-size: 25px;
                     font-weight: bold;
@@ -215,5 +223,28 @@
             opacity: 1;
         }
     }
+}
 
+@media (max-width: 760px) {
+    .child-item {
+        .content {
+            img {
+                max-height: 250px;
+            }
+
+            p {
+                display: -webkit-box;
+                -webkit-line-clamp: 5;
+                -webkit-box-orient: vertical;
+                margin-top: 20px;
+                font-size: 20px;
+                line-height: 1.5;
+                overflow: hidden;
+            }
+
+            .content2 {
+                -webkit-line-clamp: 7 !important;
+            }
+        }
+    }
 }

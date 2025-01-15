@@ -2,31 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import ListVideo from './Section/ListVideo';
 import { useSelector, useDispatch } from 'react-redux';
-import { STATUS } from '../../utils/constant';
+import { STATUS, path } from '../../utils/constant';
 const VideoGalleryPage = React.memo(() => {
     const dispatch = useDispatch();
     const { dataLibrary, loading, error } = useSelector((state) => state.dataLibrary);
     const languageApp = useSelector((state) => state.language.language);
     const [dataVideoGalleryPage, setDataVideoGalleryPage] = useState([]);
-
+    const companyInfor = useSelector((state) => state.companyInfor.companyInfor);
     const TYPE_BLOCK = {
-        block_video_Gallery: ListVideo,
+        block_videos_gallery: ListVideo,
     };
-    const KEY_TYPE_BLOCK = Object.keys(TYPE_BLOCK);
 
     useEffect(() => {
         if (dataLibrary?.data?.status === STATUS.PUBLISH) {
-            const translations = dataLibrary.data.translations;
+            const block = dataLibrary.data?.blocks;
             const blocksToUpdate = [];
-            translations.forEach((translation) => {
-                if (translation.languages_code === languageApp) {
-                    translation.blocks.forEach((block) => {
-                        if (KEY_TYPE_BLOCK.includes(block.collection)) {
-                            if (block.item?.status === STATUS.PUBLISH) {
-                                blocksToUpdate.push(block);
-                            }
-                        }
-                    });
+            block?.map((item) => {
+                if (item?.collection === 'block_videos_gallery') {
+                    blocksToUpdate.push(item);
                 }
             });
             setDataVideoGalleryPage(blocksToUpdate);
@@ -35,10 +28,27 @@ const VideoGalleryPage = React.memo(() => {
     return (
         <>
             <Helmet>
-                <title>Video Gallery - CMC Global</title>
+                <title>{`Video Gallery - ${companyInfor?.data?.[0]?.company_name}`}</title>
+                <meta
+                    name="description"
+                    content={`Explore the video gallery of ${companyInfor?.data?.[0]?.company_name} and discover our visual journey.`}
+                />
+
+                {/* open graph */}
+                <meta property="og:title" content={`Video Gallery - ${companyInfor?.data?.[0]?.company_name}`} />
+                <meta
+                    property="og:description"
+                    content={`Explore the video gallery of ${companyInfor?.data?.[0]?.company_name} and discover our visual journey.`}
+                />
+                <meta
+                    property="og:image"
+                    content={`${import.meta.env.VITE_URL_BACKEND}/assets/${companyInfor?.data?.[0]?.icon_logo}`}
+                />
+                <meta property="og:url" content={`${import.meta.env.VITE_URL_FRONTEND}${path.VIDEO_GALLERY}`} />
+                <meta property="og:type" content="website" />
             </Helmet>
             {dataVideoGalleryPage.map((item, index) => {
-                const BlockComponent = TYPE_BLOCK[item.collection];
+                const BlockComponent = TYPE_BLOCK[item?.collection];
                 return BlockComponent ? (
                     <div key={index}>
                         <BlockComponent data={item} />

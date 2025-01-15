@@ -14,7 +14,7 @@
         border: none;
         outline: none;
         transition: all 0.3s ease;
-        z-index: 10000px;
+        z-index: 98;
         color: white;
 
         &:hover {
@@ -22,7 +22,5 @@
             background-color: #00bbe4;
             color: white;
         }
-
-        z-index: 999;
     }
 }

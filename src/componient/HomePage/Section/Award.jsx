@@ -2,28 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import '../../Style/Award.scss';
 import { useSelector } from 'react-redux';
-
-// Hàm kiểm tra URL hợp lệ
-const isValidUrl = (url) => {
-    try {
-        new URL(url);
-        return true;
-    } catch (error) {
-        return false;
-    }
-};
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Award = React.memo((props_all) => {
     const [slidesToShow, setSlidesToShow] = useState(5);
     const languageApp = useSelector((state) => state.language.language);
 
     const updateSlidesToShow = () => {
         const width = window.innerWidth;
-
-        if (width <= 480) {
+        if (width < 240) {
+            setSlidesToShow(1);
+        } else if (width <= 480) {
+            setSlidesToShow(2);
+        } else if (width <= 913) {
             setSlidesToShow(3);
-        } else if (width <= 768) {
-            setSlidesToShow(4);
         } else if (width <= 1024) {
             setSlidesToShow(4);
         } else {
@@ -38,7 +30,14 @@ const Award = React.memo((props_all) => {
             window.removeEventListener('resize', updateSlidesToShow);
         };
     }, []);
-
+    useEffect(() => {
+        AOS.init({
+            duration: 1000,
+            offset: 200,
+            easing: 'ease-in-out',
+            once: false,
+        });
+    }, []);
     const CustomPrevArrow = (props) => {
         const { className, onClick } = props;
         return (
@@ -73,21 +72,14 @@ const Award = React.memo((props_all) => {
     return (
         <>
             {props_all?.data && languageApp && (
-                <div className="section-award">
+                <div className="section-award" data-aos="fade-up">
                     <div className="container">
-                        <h4>
-                            {props_all.data?.item.title?.map((item) => {
-                                if (item.languages_code === languageApp) {
-                                    return item.title;
-                                }
-                            })}
-                        </h4>
+                        <h4>{props_all.data.ele?.title}</h4>
                         <div className="awards-slider">
                             <Slider {...settings}>
-                                {props_all.data.item.images.map((item, index) => {
+                                {props_all.data.block.item.images.map((item, index) => {
                                     const imageUrl = `${import.meta.env.VITE_BACKEND_URL}/assets/${item.directus_files_id}`;
-                                    // Kiểm tra URL hợp lệ trước khi render
-                                    return isValidUrl(imageUrl) ? (
+                                    return imageUrl ? (
                                         <div key={index} className="item">
                                             <img src={imageUrl} alt={`Award Image ${index}`} />
                                         </div>

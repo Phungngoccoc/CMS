@@ -1,0 +1,88 @@
+.related-job-container {
+    padding: 40px 0;
+    background-color: #f6f9fc;
+
+    h3 {
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .related-job {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        gap: 30px;
+
+        &::-webkit-scrollbar {
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 90px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #00aeef;
+            border-radius: 90px;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #007bb8;
+        }
+
+        &::-webkit-scrollbar-track {
+            background-color: #eaeaea;
+        }
+
+        .child {
+            min-width: 400px;
+            background-color: #fbfbfb;
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            max-width: 400px;
+
+            .job-name {
+                height: 50px;
+            }
+
+            label {
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 16px;
+                display: -webkit-box;
+                -webkit-line-clamp: 4 !important;
+                -webkit-box-orient: vertical;
+                line-height: 1.5;
+                overflow: hidden;
+                text-align: justify;
+                min-height: 100px;
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+            .btn-gadient {
+                display: inline-block;
+                background: -webkit-gradient(linear, left top, left bottom, from(#00aeef), to(#33c7ff));
+                background: linear-gradient(180deg, #00aeef 0%, #33c7ff 100%);
+                color: #fff;
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 30px;
+                letter-spacing: 0.03em;
+                padding: 9px 18px;
+                border-radius: 8px;
+                border: 0.875px solid rgba(255, 255, 255, 0.21);
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+                width: 100%;
+
+                &:hover {
+                    background: linear-gradient(180deg, #84c4db 0%, #28bcf2 100%);
+                }
+            }
+        }
+    }
+}
